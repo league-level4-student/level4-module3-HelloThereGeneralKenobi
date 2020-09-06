@@ -16,6 +16,13 @@ public class ExceptionsDemo {
 		//    In the catch block, put a print statement so you know
 		//    if the code is being ran.
 		
+		try {
+			testMethod1(7);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		// 2. Now call testMethod1 with a value greater than 5. 
 		//    Running your program should not print the statement
 		//    in the catch block.
@@ -25,11 +32,20 @@ public class ExceptionsDemo {
 		// 3. Create a new class called CustomException that extends Exception.
 		//    Add a void method called terminate that simply calls System.exit(0);
 		
+		CustomException CustomException = new CustomException();
+		
 		// 5. Call testMethod2 with a negative number in a try/catch block.
 		//    In the catch block, call the terminate method using the 
 		//    CustomException object.
 		//    This demonstrates how custom exception classes can be used to
 		//    handle exceptions in unlimited ways.
+		
+		try {
+			testMethod2(-5);
+		} catch (CustomException e) {
+			// TODO Auto-generated catch block
+			CustomException.terminate();
+		}
 	}
 	
 	public static void testMethod1(int x) throws Exception {
@@ -40,4 +56,10 @@ public class ExceptionsDemo {
 	
 	// 4. Create a static void method called testMethod2(int x) that throws
 	//    a CustomException if x is negative.
+	
+	public static void testMethod2(int x) throws CustomException {
+		if(x < 0) {
+			throw new CustomException();
+		}
+	}
 }
